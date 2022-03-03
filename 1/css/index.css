@@ -8,4 +8,6 @@ h2 { color: #c64119; border-bottom: 1px solid #c64119; text-decoration: none; }
 
 h2:hover { color: #993213; border-bottom: 1px solid #993213; }
 
-body { color: #bbc3c8; background: #292929; display: inline-block; font-family: ‘Georgia’, serif; font-style: italic; font-size: 18px; line-height: 22px; margin: 0 0 20px 18px; padding: 10px 12px 8px; position: absolute; bottom: 136px; }
+body { color: #bbc3c8; background: #292929; display: inline-block; font-family: ‘Georgia’, serif; font-style: italic; font-size: 18px; line-height: 22px; margin: 0 0 20px 18px; padding: 10px 12px 8px; position: absolute; }
+
+img { size: 100px }
