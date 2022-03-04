@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css"
 </head>
 <body>
-<h1> Вывести в цикле значения массива: </h1>
+<h1> Вывести на экран только города, начинающиеся с буквы «К» </h1>
 <p>
 <?
 
@@ -19,7 +19,15 @@ $towns = [
 ];
 
 foreach ($towns as $key => $region) {
-    echo $key . ':<br>' . implode(', ', $region) . '.' . '<br>';
+    echo $key . ':<br>';
+    $str = "";
+    foreach ($region as $town){
+        if (mb_substr($town, 0, 1, "UTF-8") === 'К') {
+            $str .= $town . ", ";
+        }
+    }
+    $str = mb_substr($str , 0, -2) . '.<br>';
+    echo "{$str} <br>";
 }
 
 ?>
