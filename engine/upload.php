@@ -1,10 +1,11 @@
 <html>
 <meta charset="UTF-8"> 
-<link rel="stylesheet" type="text/css" href="../public/style.css" />
+<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
 	<title>Результат загрузки файла</title>  
   </head>
 <body>
 <?php
+ include('../engine/classSimpleImage.php');
  $uploaddir = '../public/gallery_img/big/'; // Relative path under webroot
  $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 //Проверка существует ли файл
@@ -41,10 +42,13 @@ $imageinfo = getimagesize($_FILES['userfile']['tmp_name']);
  } else {
    echo "Загрузка не получилась.\n";
  }
+
+$image = new SimpleImage();
+$image -> load($uploadfile);
+$image -> resize(150, 100);
+$image -> save("../public/gallery_img/small/{$_FILES['userfile']['name']}");
 ?>
 <br><br>
 
 </body>
 </html>
-
-
