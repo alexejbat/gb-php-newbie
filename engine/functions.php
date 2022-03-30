@@ -49,6 +49,10 @@ function prepareVariables($page) {
             break;
             var_dump($params);
 
+        case 'feedbackapi':
+            doApiFeedbackAction($action);
+            break;
+
         case 'feedback':
             doFeedbackAction($params, $action);
             $params['feedback'] = getAllFeedback();
