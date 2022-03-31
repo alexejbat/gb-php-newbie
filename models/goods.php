@@ -2,21 +2,22 @@
 
 function getGoods() {
     return getAssocResult("SELECT * FROM `goods`");
-//    $sql = "SELECT * FROM `goods`";
-//    $goods = getAssocResult($sql);
- //   return $goods;
 }
 
-function getGoodsItem($id) {
- //  return getOneResult("SELECT image FROM `goods` WHERE id = {$id}")[0];
+function getGoodsItem($id)
+{
     $id = (int)$id;
-    $sql = "SELECT * FROM `goods` WHERE id = {$id}";
-    $catalog_item = getAssocResult($sql);
+    return getAssocResult("SELECT * FROM `goods` WHERE id = {$id}")[0];
+}
 
-    // В случае если изображения нет, вернем пустое значение.
-    $result = [];
-        if (isset($catalog_item[0]))
-        $result = $catalog_item[0];
+function addLikeGood($id)
+{
+    $id = (int)$id;
+    executeQuery("UPDATE `goods` SET likes=likes + 1 WHERE id={$id}");
+}
 
-        return $result;
+function getGoodLikes($id)
+{
+    $id = (int)$id;
+    return getAssocResult("SELECT likes FROM `goods` WHERE id={$id}")[0]['likes'];
 }
