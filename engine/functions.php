@@ -1,6 +1,6 @@
 <?php
 
-function prepareVariables($page) {
+function prepareVariables($page, $action) {
     $params['layout'] = 'layout';
 
     switch ($page) {
@@ -40,17 +40,20 @@ function prepareVariables($page) {
             break;
 
         case 'catalog':
-            $params['goods'] = getGoods($id);
+            $params['catalog'] = getGoods();
             break;
 
         case 'catalog_item':
-            $id = (int)$_GET['id'];
-            $params['goods_item'] = getGoodsItem($id);
+            $params['value'] = getGoodsItem($_GET["id"]);
             break;
             var_dump($params);
 
         case 'feedbackapi':
             doApiFeedbackAction($action);
+            break;
+
+        case 'feedback2':
+            $params['feedback'] = getAllFeedback();
             break;
 
         case 'feedback':

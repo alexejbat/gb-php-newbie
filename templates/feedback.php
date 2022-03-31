@@ -10,7 +10,7 @@
     <input type="submit" value="<?=$button?>">
 </form>
 
-<?php foreach ($feedback as $value): ?>
+<?foreach ($feedback as $value): ?>
 
     <div style="margin-top: 10px"><strong><?=$value['name']?></strong>: <?=$value['feedback']?>
         <a href="/feedback/edit/?id_feed=<?=$value['id']?>">[править]</a>
