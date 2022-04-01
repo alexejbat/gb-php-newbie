@@ -3,7 +3,7 @@
 <?php foreach ($basket as $item): ?>
     <div id="item<?= $item['basket_id'] ?>">
         <h3><?= $item['name'] ?></h3>
-        <img src="/img/<?= $item['image'] ?>" width="50" alt=""><br>
+        <img src="/catalog_img/<?= $item['image'] ?>" width="150" alt=""><br>
         Цена: <?= $item['price'] ?><br><br>
 
         <button class="delete" data-id="<?= $item['basket_id'] ?>">Удалить</button>

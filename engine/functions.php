@@ -2,10 +2,16 @@
 
 function prepareVariables($page, $action) {
     $params['layout'] = 'layout';
+    $params['count'] = getBasketCount();
+
+    if (is_auth()) {
+        $params['auth'] = true;
+        $params['user'] = get_user();
+    }
 
     switch ($page) {
         case 'index':
-            $params['name'] = 'User';
+            $params['name'] = '';
             break;
 
         case 'image':
@@ -48,6 +54,14 @@ function prepareVariables($page, $action) {
             break;
             var_dump($params);
 
+        case 'basket':
+            $params['basket'] = getBasket();
+            break;
+
+        case 'header':
+            $params['header'] = '';
+            break;
+
         case 'feedbackapi':
             doApiFeedbackAction($action);
             break;
@@ -78,6 +92,26 @@ function prepareVariables($page, $action) {
             ];
             echo json_encode($params, JSON_UNESCAPED_UNICODE);
             exit;
+
+        case 'api':
+            if ($action == 'addlike') {
+                addLikeGood($_GET['id']);
+                $likes = getGoodLikes($_GET['id']);
+
+                echo json_encode(['likes' => $likes]);
+                die();
+            }
+            if ($action == 'buy') {
+                addToBasket($_GET['id']);
+                echo json_encode(['count' => getBasketCount()]);
+                die();
+            }
+            if ($action == 'delete') {
+                deleteFromBasket($_GET['id']);
+                echo json_encode(['count' => getBasketCount()]);
+                die();
+            }
+            break;
 
         default:
             echo "404";

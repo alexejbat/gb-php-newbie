@@ -15,6 +15,8 @@ define('DB', 'gb_student');
 include ROOT . "/engine/functions.php";
 include ROOT . "/engine/db.php";
 include ROOT . "/engine/render.php";
+include ROOT . "/models/auth.php";
+include ROOT . "/models/basket.php";
 include ROOT . "/models/feedback.php";
 include ROOT . "/models/log.php";
 include ROOT . "/models/gallery.php";

@@ -4,7 +4,7 @@ if (isset($_POST['send'])) {
     $login = $_POST['login'];
     $pass = $_POST['pass'];
     if (!auth($login, $pass)) {
-        die('Не верный логин пароль');
+        die('Не верный логин и пароль');
     } else {
         if (isset($_POST['save'])) {
             $hash = uniqid(rand(), true);
